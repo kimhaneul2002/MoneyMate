@@ -36,7 +36,6 @@ Hibernate · OpenAI API (`gpt-3.5-turbo-instruct`)
 
 ## 화면
 
-> `docs/` 폴더에 스크린샷을 추가하고 아래 경로에 맞춰주세요.
 
 ```markdown
 ![달력 대시보드](docs/screenshot-calendar.png)
