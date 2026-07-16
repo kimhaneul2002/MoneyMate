@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MoneyMate</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <i class="ti ti-coin"></i>
+      <span>MoneyMate</span>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section class="card month-nav">
+      <button id="prevMonth" class="icon-btn" aria-label="이전 달">
+        <i class="ti ti-chevron-left"></i>
+      </button>
+      <h1 id="monthLabel">2026년 7월</h1>
+      <button id="nextMonth" class="icon-btn" aria-label="다음 달">
+        <i class="ti ti-chevron-right"></i>
+      </button>
+    </section>
+
+    <section class="summary-row">
+      <div class="metric-card income">
+        <div class="metric-label">총수입</div>
+        <div class="metric-value" id="totalIncome">0원</div>
+      </div>
+      <div class="metric-card expense">
+        <div class="metric-label">총지출</div>
+        <div class="metric-value" id="totalExpense">0원</div>
+      </div>
+      <button id="aiBtn" class="btn btn-ai">
+        <i class="ti ti-sparkles"></i>
+        <span>AI 소비 분석</span>
+      </button>
+    </section>
+
+    <section class="card calendar-card">
+      <div class="weekday-row">
+        <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+    </section>
+
+    <div class="fab-row">
+      <button id="addBtn" class="btn btn-primary">
+        <i class="ti ti-plus"></i>
+        <span>내역 추가</span>
+      </button>
+    </div>
+
+  </main>
+</div>
+
+<!-- 날짜 상세 패널 -->
+<div class="overlay" id="dayOverlay">
+  <div class="sheet">
+    <div class="sheet-header">
+      <h2 id="dayTitle">7월 15일</h2>
+      <button class="icon-btn" id="closeDayBtn" aria-label="닫기"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="sheet-body" id="dayList"></div>
+    <button class="btn btn-secondary btn-block" id="addOnDayBtn">
+      <i class="ti ti-plus"></i>
+      <span>이 날짜에 내역 추가</span>
+    </button>
+  </div>
+</div>
+
+<!-- 등록/수정 폼 -->
+<div class="overlay" id="formOverlay">
+  <div class="sheet">
+    <div class="sheet-header">
+      <h2 id="formTitle">내역 추가</h2>
+      <button class="icon-btn" id="closeFormBtn" aria-label="닫기"><i class="ti ti-x"></i></button>
+    </div>
+    <form id="ledgerForm" class="form">
+      <label class="field">
+        <span>거래일자</span>
+        <input type="date" id="fTransactionDate" required />
+      </label>
+      <label class="field">
+        <span>내용</span>
+        <input type="text" id="fTitle" placeholder="예: 점심값" required />
+      </label>
+      <label class="field">
+        <span>금액</span>
+        <input type="number" id="fAmount" min="1" placeholder="예: 8000" required />
+      </label>
+      <label class="field">
+        <span>카테고리</span>
+        <select id="fCategory" required></select>
+      </label>
+      <div class="form-error" id="formError"></div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-danger" id="deleteBtn" style="display:none;">
+          <i class="ti ti-trash"></i>
+          <span>삭제</span>
+        </button>
+        <button type="submit" class="btn btn-primary btn-block">저장</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- AI 분석 패널 -->
+<div class="overlay" id="aiOverlay">
+  <div class="sheet">
+    <div class="sheet-header">
+      <h2><i class="ti ti-sparkles"></i> AI 소비 분석</h2>
+      <button class="icon-btn" id="closeAiBtn" aria-label="닫기"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="sheet-body" id="aiBody">
+      <div class="ai-loading" id="aiLoading">
+        <div class="spinner"></div>
+        <p>분석 중입니다...</p>
+      </div>
+      <pre class="ai-result" id="aiResult" style="display:none;"></pre>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
