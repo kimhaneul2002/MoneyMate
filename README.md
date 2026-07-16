@@ -36,12 +36,10 @@ Hibernate · OpenAI API (`gpt-3.5-turbo-instruct`)
 
 ## 화면
 
-
-```markdown
 ![달력 대시보드](docs/screenshot-calendar.png)
 ![내역 추가](docs/screenshot-add.png)
 ![AI 소비 분석](docs/screenshot-ai.png)
-```
+
 
 ---
 
